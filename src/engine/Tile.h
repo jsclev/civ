@@ -10,7 +10,7 @@ public:
     Tile(int x, int y, int tileType);
 
     //Shows the tile
-    void render(SDL_Rect &camera, LTexture gTileTexture, SDL_Renderer *gRenderer, SDL_Rect gTileClips[]);
+    void render(SDL_Rect &camera, LTexture gTileTexture, SDL_Renderer* gRenderer, SDL_Rect clip);
 
     //Get the tile type
     int getType();
