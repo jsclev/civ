@@ -14,7 +14,7 @@ const int SCREEN_FPS = 60;
 const int SCREEN_TICK_PER_FRAME = 1000 / SCREEN_FPS;
 
 const int SCREEN_WIDTH = 1536;
-const int SCREEN_HEIGHT = 1024;
+const int SCREEN_HEIGHT = 968;
 const int TILE_WIDTH = 256;
 const int TILE_HEIGHT = 384;
 const int TILE_SIZE = 256;
@@ -549,10 +549,25 @@ bool loadMedia()
         gSpriteClips[MOUNTAIN4_TILE].w = TILE_WIDTH;
         gSpriteClips[MOUNTAIN4_TILE].h = TILE_HEIGHT;
 
-        gSpriteClips[DESERT1_TILE].x = TILE_SIZE * 4;
-        gSpriteClips[DESERT1_TILE].y = TILE_SIZE * 2;
+        gSpriteClips[DESERT1_TILE].x = TILE_WIDTH * 4;
+        gSpriteClips[DESERT1_TILE].y = TILE_HEIGHT;
         gSpriteClips[DESERT1_TILE].w = TILE_WIDTH;
         gSpriteClips[DESERT1_TILE].h = TILE_HEIGHT;
+
+        gSpriteClips[DESERT2_TILE].x = TILE_WIDTH * 5;
+        gSpriteClips[DESERT2_TILE].y = TILE_HEIGHT;
+        gSpriteClips[DESERT2_TILE].w = TILE_WIDTH;
+        gSpriteClips[DESERT2_TILE].h = TILE_HEIGHT;
+
+        gSpriteClips[DESERT3_TILE].x = TILE_WIDTH * 6;
+        gSpriteClips[DESERT3_TILE].y = TILE_HEIGHT;
+        gSpriteClips[DESERT3_TILE].w = TILE_WIDTH;
+        gSpriteClips[DESERT3_TILE].h = TILE_HEIGHT;
+
+        gSpriteClips[DESERT4_TILE].x = TILE_WIDTH * 7;
+        gSpriteClips[DESERT4_TILE].y = TILE_HEIGHT;
+        gSpriteClips[DESERT4_TILE].w = TILE_WIDTH;
+        gSpriteClips[DESERT4_TILE].h = TILE_HEIGHT;
 
         gSpriteClips[FOREST1_TILE].x = TILE_WIDTH * 0;
         gSpriteClips[FOREST1_TILE].y = TILE_HEIGHT * 2;
@@ -573,6 +588,66 @@ bool loadMedia()
         gSpriteClips[FOREST4_TILE].y = TILE_HEIGHT * 2;
         gSpriteClips[FOREST4_TILE].w = TILE_WIDTH;
         gSpriteClips[FOREST4_TILE].h = TILE_HEIGHT;
+
+        gSpriteClips[DIRT1_TILE].x = TILE_WIDTH * 0;
+        gSpriteClips[DIRT1_TILE].y = TILE_HEIGHT * 3;
+        gSpriteClips[DIRT1_TILE].w = TILE_WIDTH;
+        gSpriteClips[DIRT1_TILE].h = TILE_HEIGHT;
+
+        gSpriteClips[DIRT2_TILE].x = TILE_WIDTH * 1;
+        gSpriteClips[DIRT2_TILE].y = TILE_HEIGHT * 3;
+        gSpriteClips[DIRT2_TILE].w = TILE_WIDTH;
+        gSpriteClips[DIRT2_TILE].h = TILE_HEIGHT;
+
+        gSpriteClips[DIRT3_TILE].x = TILE_WIDTH * 2;
+        gSpriteClips[DIRT3_TILE].y = TILE_HEIGHT * 3;
+        gSpriteClips[DIRT3_TILE].w = TILE_WIDTH;
+        gSpriteClips[DIRT3_TILE].h = TILE_HEIGHT;
+
+        gSpriteClips[DIRT4_TILE].x = TILE_WIDTH * 3;
+        gSpriteClips[DIRT4_TILE].y = TILE_HEIGHT * 3;
+        gSpriteClips[DIRT4_TILE].w = TILE_WIDTH;
+        gSpriteClips[DIRT4_TILE].h = TILE_HEIGHT;
+
+        gSpriteClips[MARSH1_TILE].x = TILE_WIDTH * 4;
+        gSpriteClips[MARSH1_TILE].y = TILE_HEIGHT * 2;
+        gSpriteClips[MARSH1_TILE].w = TILE_WIDTH;
+        gSpriteClips[MARSH1_TILE].h = TILE_HEIGHT;
+
+        gSpriteClips[MARSH2_TILE].x = TILE_WIDTH * 5;
+        gSpriteClips[MARSH2_TILE].y = TILE_HEIGHT * 2;
+        gSpriteClips[MARSH2_TILE].w = TILE_WIDTH;
+        gSpriteClips[MARSH2_TILE].h = TILE_HEIGHT;
+
+        gSpriteClips[MARSH3_TILE].x = TILE_WIDTH * 6;
+        gSpriteClips[MARSH3_TILE].y = TILE_HEIGHT * 2;
+        gSpriteClips[MARSH3_TILE].w = TILE_WIDTH;
+        gSpriteClips[MARSH3_TILE].h = TILE_HEIGHT;
+
+        gSpriteClips[MARSH4_TILE].x = TILE_WIDTH * 7;
+        gSpriteClips[MARSH4_TILE].y = TILE_HEIGHT * 2;
+        gSpriteClips[MARSH4_TILE].w = TILE_WIDTH;
+        gSpriteClips[MARSH4_TILE].h = TILE_HEIGHT;
+
+        gSpriteClips[HILLS1_TILE].x = TILE_WIDTH * 0;
+        gSpriteClips[HILLS1_TILE].y = TILE_HEIGHT * 4;
+        gSpriteClips[HILLS1_TILE].w = TILE_WIDTH;
+        gSpriteClips[HILLS1_TILE].h = TILE_HEIGHT;
+
+        gSpriteClips[HILLS2_TILE].x = TILE_WIDTH * 1;
+        gSpriteClips[HILLS2_TILE].y = TILE_HEIGHT * 4;
+        gSpriteClips[HILLS2_TILE].w = TILE_WIDTH;
+        gSpriteClips[HILLS2_TILE].h = TILE_HEIGHT;
+
+        gSpriteClips[HILLS3_TILE].x = TILE_WIDTH * 2;
+        gSpriteClips[HILLS3_TILE].y = TILE_HEIGHT * 4;
+        gSpriteClips[HILLS3_TILE].w = TILE_WIDTH;
+        gSpriteClips[HILLS3_TILE].h = TILE_HEIGHT;
+
+        gSpriteClips[HILLS4_TILE].x = TILE_WIDTH * 3;
+        gSpriteClips[HILLS4_TILE].y = TILE_HEIGHT * 4;
+        gSpriteClips[HILLS4_TILE].w = TILE_WIDTH;
+        gSpriteClips[HILLS4_TILE].h = TILE_HEIGHT;
     }
 
     return success;
@@ -690,8 +765,8 @@ int main( int argc, char* args[] )
                 gSpriteSheetTexture.render(1 * TILE_WIDTH, TILE_SIZE - 128, &gSpriteClips[WATER1_TILE]);
                 gSpriteSheetTexture.render(1 * TILE_WIDTH, 2 * TILE_SIZE - TILE_SIZE / 2, &gSpriteClips[MOUNTAIN1_TILE]);
                 gSpriteSheetTexture.render(1 * TILE_WIDTH, 3 * TILE_SIZE - TILE_SIZE / 2, &gSpriteClips[GRASS3_TILE]);
-                gSpriteSheetTexture.render(1 * TILE_WIDTH, 4 * TILE_SIZE - TILE_SIZE / 2, &gSpriteClips[FOREST3_TILE]);
-                gSpriteSheetTexture.render(1 * TILE_WIDTH, 5 * TILE_SIZE - TILE_SIZE / 2, &gSpriteClips[FOREST4_TILE]);
+                gSpriteSheetTexture.render(1 * TILE_WIDTH, 4 * TILE_SIZE - TILE_SIZE / 2, &gSpriteClips[HILLS3_TILE]);
+                gSpriteSheetTexture.render(1 * TILE_WIDTH, 5 * TILE_SIZE - TILE_SIZE / 2, &gSpriteClips[HILLS4_TILE]);
                 gSpriteSheetTexture.render(1 * TILE_WIDTH, 6 * TILE_SIZE - TILE_SIZE / 2, &gSpriteClips[FOREST4_TILE]);
                 gSpriteSheetTexture.render(1 * TILE_WIDTH, 7 * TILE_SIZE - TILE_SIZE / 2, &gSpriteClips[FOREST4_TILE]);
                 gSpriteSheetTexture.render(1 * TILE_WIDTH, 8 * TILE_SIZE - TILE_SIZE / 2, &gSpriteClips[FOREST4_TILE]);
@@ -702,9 +777,9 @@ int main( int argc, char* args[] )
                 gSpriteSheetTexture.render(2 * TILE_WIDTH, 2 * TILE_SIZE - TILE_SIZE / 2, &gSpriteClips[WATER1_TILE]);
                 gSpriteSheetTexture.render(2 * TILE_WIDTH, 3 * TILE_SIZE - TILE_SIZE / 2, &gSpriteClips[MOUNTAIN2_TILE]);
                 gSpriteSheetTexture.render(2 * TILE_WIDTH, 4 * TILE_SIZE - TILE_SIZE / 2, &gSpriteClips[MOUNTAIN2_TILE]);
-                gSpriteSheetTexture.render(2 * TILE_WIDTH, 5 * TILE_SIZE - TILE_SIZE / 2, &gSpriteClips[MOUNTAIN2_TILE]);
-                gSpriteSheetTexture.render(2 * TILE_WIDTH, 6 * TILE_SIZE - TILE_SIZE / 2, &gSpriteClips[MOUNTAIN2_TILE]);
-                gSpriteSheetTexture.render(2 * TILE_WIDTH, 7 * TILE_SIZE - TILE_SIZE / 2, &gSpriteClips[MOUNTAIN2_TILE]);
+                gSpriteSheetTexture.render(2 * TILE_WIDTH, 5 * TILE_SIZE - TILE_SIZE / 2, &gSpriteClips[HILLS2_TILE]);
+                gSpriteSheetTexture.render(2 * TILE_WIDTH, 6 * TILE_SIZE - TILE_SIZE / 2, &gSpriteClips[HILLS1_TILE]);
+                gSpriteSheetTexture.render(2 * TILE_WIDTH, 7 * TILE_SIZE - TILE_SIZE / 2, &gSpriteClips[GRASS2_TILE]);
                 gSpriteSheetTexture.render(2 * TILE_WIDTH, 8 * TILE_SIZE - TILE_SIZE / 2, &gSpriteClips[MOUNTAIN2_TILE]);
 
                 // Column
@@ -714,8 +789,8 @@ int main( int argc, char* args[] )
                 gSpriteSheetTexture.render(3 * TILE_WIDTH, 3 * TILE_SIZE - TILE_SIZE / 2, &gSpriteClips[WATER1_TILE]);
                 gSpriteSheetTexture.render(3 * TILE_WIDTH, 4 * TILE_SIZE - TILE_SIZE / 2, &gSpriteClips[WATER1_TILE]);
                 gSpriteSheetTexture.render(3 * TILE_WIDTH, 5 * TILE_SIZE - TILE_SIZE / 2, &gSpriteClips[MOUNTAIN1_TILE]);
-                gSpriteSheetTexture.render(3 * TILE_WIDTH, 6 * TILE_SIZE - TILE_SIZE / 2, &gSpriteClips[MOUNTAIN1_TILE]);
-                gSpriteSheetTexture.render(3 * TILE_WIDTH, 7 * TILE_SIZE - TILE_SIZE / 2, &gSpriteClips[MOUNTAIN1_TILE]);
+                gSpriteSheetTexture.render(3 * TILE_WIDTH, 6 * TILE_SIZE - TILE_SIZE / 2, &gSpriteClips[HILLS1_TILE]);
+                gSpriteSheetTexture.render(3 * TILE_WIDTH, 7 * TILE_SIZE - TILE_SIZE / 2, &gSpriteClips[GRASS3_TILE]);
                 gSpriteSheetTexture.render(3 * TILE_WIDTH, 8 * TILE_SIZE - TILE_SIZE / 2, &gSpriteClips[MOUNTAIN1_TILE]);
 
                 // Column
@@ -724,7 +799,7 @@ int main( int argc, char* args[] )
                 gSpriteSheetTexture.render(4 * TILE_WIDTH, 2 * TILE_SIZE - TILE_SIZE / 2, &gSpriteClips[MOUNTAIN2_TILE]);
                 gSpriteSheetTexture.render(4 * TILE_WIDTH, 3 * TILE_SIZE - TILE_SIZE / 2, &gSpriteClips[WATER1_TILE]);
                 gSpriteSheetTexture.render(4 * TILE_WIDTH, 4 * TILE_SIZE - TILE_SIZE / 2, &gSpriteClips[WATER1_TILE]);
-                gSpriteSheetTexture.render(4 * TILE_WIDTH, 5 * TILE_SIZE - TILE_SIZE / 2, &gSpriteClips[GRASS4_TILE]);
+                gSpriteSheetTexture.render(4 * TILE_WIDTH, 5 * TILE_SIZE - TILE_SIZE / 2, &gSpriteClips[MARSH4_TILE]);
                 gSpriteSheetTexture.render(4 * TILE_WIDTH, 6 * TILE_SIZE - TILE_SIZE / 2, &gSpriteClips[GRASS4_TILE]);
                 gSpriteSheetTexture.render(4 * TILE_WIDTH, 7 * TILE_SIZE - TILE_SIZE / 2, &gSpriteClips[GRASS4_TILE]);
                 gSpriteSheetTexture.render(4 * TILE_WIDTH, 8 * TILE_SIZE - TILE_SIZE / 2, &gSpriteClips[GRASS4_TILE]);
@@ -734,7 +809,7 @@ int main( int argc, char* args[] )
                 gSpriteSheetTexture.render(5 * TILE_WIDTH, TILE_SIZE - 128, &gSpriteClips[MOUNTAIN1_TILE]);
                 gSpriteSheetTexture.render(5 * TILE_WIDTH, 2 * TILE_SIZE - TILE_SIZE / 2, &gSpriteClips[WATER1_TILE]);
                 gSpriteSheetTexture.render(5 * TILE_WIDTH, 3 * TILE_SIZE - TILE_SIZE / 2, &gSpriteClips[WATER1_TILE]);
-                gSpriteSheetTexture.render(5 * TILE_WIDTH, 4 * TILE_SIZE - TILE_SIZE / 2, &gSpriteClips[GRASS4_TILE]);
+                gSpriteSheetTexture.render(5 * TILE_WIDTH, 4 * TILE_SIZE - TILE_SIZE / 2, &gSpriteClips[MARSH2_TILE]);
                 gSpriteSheetTexture.render(5 * TILE_WIDTH, 5 * TILE_SIZE - TILE_SIZE / 2, &gSpriteClips[GRASS4_TILE]);
                 gSpriteSheetTexture.render(5 * TILE_WIDTH, 6 * TILE_SIZE - TILE_SIZE / 2, &gSpriteClips[GRASS4_TILE]);
                 gSpriteSheetTexture.render(5 * TILE_WIDTH, 7 * TILE_SIZE - TILE_SIZE / 2, &gSpriteClips[GRASS4_TILE]);
@@ -744,8 +819,8 @@ int main( int argc, char* args[] )
                 gSpriteSheetTexture.render(6 * TILE_WIDTH, -(TILE_SIZE / 2), &gSpriteClips[FOREST1_TILE]);
                 gSpriteSheetTexture.render(6 * TILE_WIDTH, TILE_SIZE - 128, &gSpriteClips[MOUNTAIN1_TILE]);
                 gSpriteSheetTexture.render(6 * TILE_WIDTH, 2 * TILE_SIZE - TILE_SIZE / 2, &gSpriteClips[WATER1_TILE]);
-                gSpriteSheetTexture.render(6 * TILE_WIDTH, 3 * TILE_SIZE - TILE_SIZE / 2, &gSpriteClips[GRASS2_TILE]);
-                gSpriteSheetTexture.render(6 * TILE_WIDTH, 4 * TILE_SIZE - TILE_SIZE / 2, &gSpriteClips[FOREST1_TILE]);
+                gSpriteSheetTexture.render(6 * TILE_WIDTH, 3 * TILE_SIZE - TILE_SIZE / 2, &gSpriteClips[MARSH1_TILE]);
+                gSpriteSheetTexture.render(6 * TILE_WIDTH, 4 * TILE_SIZE - TILE_SIZE / 2, &gSpriteClips[MARSH2_TILE]);
                 gSpriteSheetTexture.render(6 * TILE_WIDTH, 5 * TILE_SIZE - TILE_SIZE / 2, &gSpriteClips[FOREST2_TILE]);
                 gSpriteSheetTexture.render(6 * TILE_WIDTH, 6 * TILE_SIZE - TILE_SIZE / 2, &gSpriteClips[FOREST2_TILE]);
                 gSpriteSheetTexture.render(6 * TILE_WIDTH, 7 * TILE_SIZE - TILE_SIZE / 2, &gSpriteClips[FOREST2_TILE]);
@@ -758,8 +833,8 @@ int main( int argc, char* args[] )
                 gSpriteSheetTexture.render(7 * TILE_WIDTH, 3 * TILE_SIZE - TILE_SIZE / 2, &gSpriteClips[MOUNTAIN3_TILE]);
                 gSpriteSheetTexture.render(7 * TILE_WIDTH, 4 * TILE_SIZE - TILE_SIZE / 2, &gSpriteClips[FOREST3_TILE]);
                 gSpriteSheetTexture.render(7 * TILE_WIDTH, 5 * TILE_SIZE - TILE_SIZE / 2, &gSpriteClips[FOREST4_TILE]);
-                gSpriteSheetTexture.render(7 * TILE_WIDTH, 6 * TILE_SIZE - TILE_SIZE / 2, &gSpriteClips[FOREST4_TILE]);
-                gSpriteSheetTexture.render(7 * TILE_WIDTH, 7 * TILE_SIZE - TILE_SIZE / 2, &gSpriteClips[FOREST4_TILE]);
+                gSpriteSheetTexture.render(7 * TILE_WIDTH, 6 * TILE_SIZE - TILE_SIZE / 2, &gSpriteClips[HILLS4_TILE]);
+                gSpriteSheetTexture.render(7 * TILE_WIDTH, 7 * TILE_SIZE - TILE_SIZE / 2, &gSpriteClips[HILLS4_TILE]);
                 gSpriteSheetTexture.render(7 * TILE_WIDTH, 8 * TILE_SIZE - TILE_SIZE / 2, &gSpriteClips[FOREST4_TILE]);
 
                 // Column
@@ -768,21 +843,21 @@ int main( int argc, char* args[] )
                 gSpriteSheetTexture.render(8 * TILE_WIDTH, 2 * TILE_SIZE - TILE_SIZE / 2, &gSpriteClips[WATER1_TILE]);
                 gSpriteSheetTexture.render(8 * TILE_WIDTH, 3 * TILE_SIZE - TILE_SIZE / 2, &gSpriteClips[MOUNTAIN2_TILE]);
                 gSpriteSheetTexture.render(8 * TILE_WIDTH, 4 * TILE_SIZE - TILE_SIZE / 2, &gSpriteClips[MOUNTAIN2_TILE]);
-                gSpriteSheetTexture.render(8 * TILE_WIDTH, 5 * TILE_SIZE - TILE_SIZE / 2, &gSpriteClips[MOUNTAIN2_TILE]);
+                gSpriteSheetTexture.render(8 * TILE_WIDTH, 5 * TILE_SIZE - TILE_SIZE / 2, &gSpriteClips[HILLS2_TILE]);
                 gSpriteSheetTexture.render(8 * TILE_WIDTH, 6 * TILE_SIZE - TILE_SIZE / 2, &gSpriteClips[MOUNTAIN2_TILE]);
-                gSpriteSheetTexture.render(8 * TILE_WIDTH, 7 * TILE_SIZE - TILE_SIZE / 2, &gSpriteClips[MOUNTAIN2_TILE]);
+                gSpriteSheetTexture.render(8 * TILE_WIDTH, 7 * TILE_SIZE - TILE_SIZE / 2, &gSpriteClips[HILLS2_TILE]);
                 gSpriteSheetTexture.render(8 * TILE_WIDTH, 8 * TILE_SIZE - TILE_SIZE / 2, &gSpriteClips[MOUNTAIN2_TILE]);
 
                 // Column
                 gSpriteSheetTexture.render(9 * TILE_WIDTH, -(TILE_SIZE / 2), &gSpriteClips[WATER1_TILE]);
-                gSpriteSheetTexture.render(9 * TILE_WIDTH, TILE_SIZE - 128, &gSpriteClips[WATER1_TILE]);
+                gSpriteSheetTexture.render(9 * TILE_WIDTH, TILE_SIZE - 128, &gSpriteClips[WATER3_TILE]);
                 gSpriteSheetTexture.render(9 * TILE_WIDTH, 2 * TILE_SIZE - TILE_SIZE / 2, &gSpriteClips[GRASS4_TILE]);
                 gSpriteSheetTexture.render(9 * TILE_WIDTH, 3 * TILE_SIZE - TILE_SIZE / 2, &gSpriteClips[MOUNTAIN1_TILE]);
-                gSpriteSheetTexture.render(9 * TILE_WIDTH, 4 * TILE_SIZE - TILE_SIZE / 2, &gSpriteClips[MOUNTAIN1_TILE]);
-                gSpriteSheetTexture.render(9 * TILE_WIDTH, 5 * TILE_SIZE - TILE_SIZE / 2, &gSpriteClips[MOUNTAIN1_TILE]);
-                gSpriteSheetTexture.render(9 * TILE_WIDTH, 6 * TILE_SIZE - TILE_SIZE / 2, &gSpriteClips[MOUNTAIN1_TILE]);
+                gSpriteSheetTexture.render(9 * TILE_WIDTH, 4 * TILE_SIZE - TILE_SIZE / 2, &gSpriteClips[MOUNTAIN3_TILE]);
+                gSpriteSheetTexture.render(9 * TILE_WIDTH, 5 * TILE_SIZE - TILE_SIZE / 2, &gSpriteClips[HILLS1_TILE]);
+                gSpriteSheetTexture.render(9 * TILE_WIDTH, 6 * TILE_SIZE - TILE_SIZE / 2, &gSpriteClips[HILLS3_TILE]);
                 gSpriteSheetTexture.render(9 * TILE_WIDTH, 7 * TILE_SIZE - TILE_SIZE / 2, &gSpriteClips[MOUNTAIN1_TILE]);
-                gSpriteSheetTexture.render(9 * TILE_WIDTH, 8 * TILE_SIZE - TILE_SIZE / 2, &gSpriteClips[MOUNTAIN1_TILE]);
+                gSpriteSheetTexture.render(9 * TILE_WIDTH, 8 * TILE_SIZE - TILE_SIZE / 2, &gSpriteClips[MOUNTAIN4_TILE]);
 
                 // Column
                 gSpriteSheetTexture.render(10 * TILE_WIDTH, -(TILE_SIZE / 2), &gSpriteClips[WATER1_TILE]);
@@ -792,30 +867,30 @@ int main( int argc, char* args[] )
                 gSpriteSheetTexture.render(10 * TILE_WIDTH, 4 * TILE_SIZE - TILE_SIZE / 2, &gSpriteClips[GRASS4_TILE]);
                 gSpriteSheetTexture.render(10 * TILE_WIDTH, 5 * TILE_SIZE - TILE_SIZE / 2, &gSpriteClips[GRASS4_TILE]);
                 gSpriteSheetTexture.render(10 * TILE_WIDTH, 6 * TILE_SIZE - TILE_SIZE / 2, &gSpriteClips[GRASS4_TILE]);
-                gSpriteSheetTexture.render(10 * TILE_WIDTH, 7 * TILE_SIZE - TILE_SIZE / 2, &gSpriteClips[GRASS4_TILE]);
-                gSpriteSheetTexture.render(10 * TILE_WIDTH, 8 * TILE_SIZE - TILE_SIZE / 2, &gSpriteClips[GRASS4_TILE]);
+                gSpriteSheetTexture.render(10 * TILE_WIDTH, 7 * TILE_SIZE - TILE_SIZE / 2, &gSpriteClips[DESERT3_TILE]);
+                gSpriteSheetTexture.render(10 * TILE_WIDTH, 8 * TILE_SIZE - TILE_SIZE / 2, &gSpriteClips[DESERT2_TILE]);
 
                 // Column
                 gSpriteSheetTexture.render(11 * TILE_WIDTH, -(TILE_SIZE / 2), &gSpriteClips[WATER1_TILE]);
-                gSpriteSheetTexture.render(11 * TILE_WIDTH, TILE_SIZE - 128, &gSpriteClips[MOUNTAIN1_TILE]);
+                gSpriteSheetTexture.render(11 * TILE_WIDTH, TILE_SIZE - 128, &gSpriteClips[MOUNTAIN4_TILE]);
                 gSpriteSheetTexture.render(11 * TILE_WIDTH, 2 * TILE_SIZE - TILE_SIZE / 2, &gSpriteClips[GRASS3_TILE]);
                 gSpriteSheetTexture.render(11 * TILE_WIDTH, 3 * TILE_SIZE - TILE_SIZE / 2, &gSpriteClips[GRASS2_TILE]);
                 gSpriteSheetTexture.render(11 * TILE_WIDTH, 4 * TILE_SIZE - TILE_SIZE / 2, &gSpriteClips[GRASS4_TILE]);
                 gSpriteSheetTexture.render(11 * TILE_WIDTH, 5 * TILE_SIZE - TILE_SIZE / 2, &gSpriteClips[GRASS4_TILE]);
-                gSpriteSheetTexture.render(11 * TILE_WIDTH, 6 * TILE_SIZE - TILE_SIZE / 2, &gSpriteClips[GRASS4_TILE]);
-                gSpriteSheetTexture.render(11 * TILE_WIDTH, 7 * TILE_SIZE - TILE_SIZE / 2, &gSpriteClips[GRASS4_TILE]);
-                gSpriteSheetTexture.render(11 * TILE_WIDTH, 8 * TILE_SIZE - TILE_SIZE / 2, &gSpriteClips[GRASS4_TILE]);
+                gSpriteSheetTexture.render(11 * TILE_WIDTH, 6 * TILE_SIZE - TILE_SIZE / 2, &gSpriteClips[DESERT1_TILE]);
+                gSpriteSheetTexture.render(11 * TILE_WIDTH, 7 * TILE_SIZE - TILE_SIZE / 2, &gSpriteClips[DESERT2_TILE]);
+                gSpriteSheetTexture.render(11 * TILE_WIDTH, 8 * TILE_SIZE - TILE_SIZE / 2, &gSpriteClips[DESERT3_TILE]);
 
                 // Column
                 gSpriteSheetTexture.render(12 * TILE_WIDTH, -(TILE_SIZE / 2), &gSpriteClips[WATER1_TILE]);
-                gSpriteSheetTexture.render(12 * TILE_WIDTH, TILE_SIZE - 128, &gSpriteClips[MOUNTAIN1_TILE]);
+                gSpriteSheetTexture.render(12 * TILE_WIDTH, TILE_SIZE - 128, &gSpriteClips[MOUNTAIN2_TILE]);
                 gSpriteSheetTexture.render(12 * TILE_WIDTH, 2 * TILE_SIZE - TILE_SIZE / 2, &gSpriteClips[GRASS3_TILE]);
                 gSpriteSheetTexture.render(12 * TILE_WIDTH, 3 * TILE_SIZE - TILE_SIZE / 2, &gSpriteClips[GRASS2_TILE]);
                 gSpriteSheetTexture.render(12 * TILE_WIDTH, 4 * TILE_SIZE - TILE_SIZE / 2, &gSpriteClips[GRASS4_TILE]);
                 gSpriteSheetTexture.render(12 * TILE_WIDTH, 5 * TILE_SIZE - TILE_SIZE / 2, &gSpriteClips[GRASS4_TILE]);
                 gSpriteSheetTexture.render(12 * TILE_WIDTH, 6 * TILE_SIZE - TILE_SIZE / 2, &gSpriteClips[GRASS4_TILE]);
-                gSpriteSheetTexture.render(12 * TILE_WIDTH, 7 * TILE_SIZE - TILE_SIZE / 2, &gSpriteClips[GRASS4_TILE]);
-                gSpriteSheetTexture.render(12 * TILE_WIDTH, 8 * TILE_SIZE - TILE_SIZE / 2, &gSpriteClips[GRASS4_TILE]);
+                gSpriteSheetTexture.render(12 * TILE_WIDTH, 7 * TILE_SIZE - TILE_SIZE / 2, &gSpriteClips[DESERT4_TILE]);
+                gSpriteSheetTexture.render(12 * TILE_WIDTH, 8 * TILE_SIZE - TILE_SIZE / 2, &gSpriteClips[DESERT3_TILE]);
 
                 // Column
                 gSpriteSheetTexture.render(13 * TILE_WIDTH, -(TILE_SIZE / 2), &gSpriteClips[WATER1_TILE]);
@@ -824,9 +899,9 @@ int main( int argc, char* args[] )
                 gSpriteSheetTexture.render(13 * TILE_WIDTH, 3 * TILE_SIZE - TILE_SIZE / 2, &gSpriteClips[GRASS2_TILE]);
                 gSpriteSheetTexture.render(13 * TILE_WIDTH, 4 * TILE_SIZE - TILE_SIZE / 2, &gSpriteClips[GRASS4_TILE]);
                 gSpriteSheetTexture.render(13 * TILE_WIDTH, 5 * TILE_SIZE - TILE_SIZE / 2, &gSpriteClips[GRASS4_TILE]);
-                gSpriteSheetTexture.render(13 * TILE_WIDTH, 6 * TILE_SIZE - TILE_SIZE / 2, &gSpriteClips[GRASS4_TILE]);
-                gSpriteSheetTexture.render(13 * TILE_WIDTH, 7 * TILE_SIZE - TILE_SIZE / 2, &gSpriteClips[GRASS4_TILE]);
-                gSpriteSheetTexture.render(13 * TILE_WIDTH, 8 * TILE_SIZE - TILE_SIZE / 2, &gSpriteClips[GRASS4_TILE]);
+                gSpriteSheetTexture.render(13 * TILE_WIDTH, 6 * TILE_SIZE - TILE_SIZE / 2, &gSpriteClips[DESERT1_TILE]);
+                gSpriteSheetTexture.render(13 * TILE_WIDTH, 7 * TILE_SIZE - TILE_SIZE / 2, &gSpriteClips[DESERT2_TILE]);
+                gSpriteSheetTexture.render(13 * TILE_WIDTH, 8 * TILE_SIZE - TILE_SIZE / 2, &gSpriteClips[DESERT3_TILE]);
 
                 gFPSTextTexture.render( ( SCREEN_WIDTH - gFPSTextTexture.getWidth() ) / 2, ( SCREEN_HEIGHT - gFPSTextTexture.getHeight() ) / 2 );
 
