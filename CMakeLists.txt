@@ -3,17 +3,15 @@ project(civ)
 
 set(CMAKE_CXX_STANDARD 14)
 
-set(SDL2_INCLUDE_DIR /usr/local/Cellar/sdl2/2.0.12_1/include/SDL2)
-set(SDL2_IMAGE_INCLUDE_DIR /usr/local/Cellar/sdl2_image/2.0.5/include/SDL2)
-set(SDL2_TTF_INCLUDE_DIR /usr/local/Cellar/sdl2_ttf/2.0.15/include/SDL2)
+list(APPEND CMAKE_MODULE_PATH ${CMAKE_CURRENT_SOURCE_DIR}/cmake/sdl2)
 
-set(SDL2_LIB_DIR /usr/local/Cellar/sdl2/2.0.12_1/lib)
-set(SDL2_IMAGE_LIB_DIR /usr/local/Cellar/sdl2_image/2.0.5/lib)
-set(SDL2_TTF_LIB_DIR /usr/local/Cellar/sdl2_ttf/2.0.15/lib)
-
-include_directories(${SDL2_INCLUDE_DIR} ${SDL2_IMAGE_INCLUDE_DIR} ${SDL2_TTF_INCLUDE_DIR})
-link_directories(${SDL2_LIB_DIR} ${SDL2_IMAGE_LIB_DIR} ${SDL2_TTF_LIB_DIR})
+find_package(SDL2 REQUIRED)
+find_package(SDL2_image REQUIRED)
+find_package(SDL2_ttf REQUIRED)
 
 add_executable(civ src/main.cpp)
 
-target_link_libraries(${PROJECT_NAME} SDL2main SDL2 SDL2_image SDL2_ttf)
+include_directories(${PROJECT_NAME} ${SDL2_INCLUDE_DIRS})
+target_link_libraries(${PROJECT_NAME} SDL2::Main SDL2::Image SDL2::TTF)
+
+file(COPY assets DESTINATION ${CMAKE_BINARY_DIR})

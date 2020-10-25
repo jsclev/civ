@@ -10,3 +10,5 @@ CTestTestfile.cmake
 
 cmake-build-debug/
 *.idea
+.vs
+.DS_Store
