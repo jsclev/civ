@@ -9,7 +9,7 @@ find_package(SDL2 REQUIRED)
 find_package(SDL2_image REQUIRED)
 find_package(SDL2_ttf REQUIRED)
 
-add_executable(civ src/main.cpp)
+add_executable(civ src/main.cpp src/engine/Tile.cpp src/engine/Tile.h src/engine/Timer.cpp src/engine/Timer.h src/engine/Texture.cpp src/engine/Texture.h src/engine/constants.h)
 
 include_directories(${PROJECT_NAME} ${SDL2_INCLUDE_DIRS})
 target_link_libraries(${PROJECT_NAME} SDL2::Main SDL2::Image SDL2::TTF)
