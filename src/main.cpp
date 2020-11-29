@@ -17,8 +17,10 @@ void close();
 SDL_Window *gWindow = nullptr;
 SDL_Renderer *gRenderer = nullptr;
 TTF_Font *gFont = nullptr;
-SDL_Rect gSpriteClips[128];
-Texture gSpriteSheetTexture;
+SDL_Rect gTileClips[32];
+SDL_Rect gIconClips[1];
+Texture gTileTexture;
+Texture gIconTexture;
 Texture gFPSTextTexture;
 
 bool init() {
@@ -28,7 +30,6 @@ bool init() {
         printf("SDL could not initialize! %s\n", SDL_GetError());
         success = false;
     } else {
-        //Set texture filtering to linear
         if (!SDL_SetHint(SDL_HINT_RENDER_SCALE_QUALITY, "1")) {
             printf("Warning: Linear texture filtering not enabled!");
         }
@@ -76,181 +77,189 @@ bool loadMedia() {
         success = false;
     }
 
-    if (!gSpriteSheetTexture.loadFromFile(
+    if (!gTileTexture.loadFromFile(
             gRenderer,
             "assets/images/tiles/painted_terrain_tiles_basic_256x384_sheet.png")) {
         printf("Failed to load sprite sheet texture!\n");
+
         success = false;
-    } else {
-        // Grass tiles
-        gSpriteClips[GRASS1_TILE].x = TILE_WIDTH * 0;
-        gSpriteClips[GRASS1_TILE].y = 0;
-        gSpriteClips[GRASS1_TILE].w = TILE_WIDTH;
-        gSpriteClips[GRASS1_TILE].h = TILE_HEIGHT;
-        SDL_Rect r;
-        r.x = TILE_WIDTH * 0;
-        r.y = 0;
-        r.w = TILE_WIDTH;
-        r.h = TILE_HEIGHT;
-//        tiles[0] = new Tile(gRenderer, gSpriteSheetTexture, 0, 0, &r);
-
-        gSpriteClips[GRASS2_TILE].x = TILE_WIDTH * 1;
-        gSpriteClips[GRASS2_TILE].y = 0;
-        gSpriteClips[GRASS2_TILE].w = TILE_WIDTH;
-        gSpriteClips[GRASS2_TILE].h = TILE_HEIGHT;
-
-        gSpriteClips[GRASS3_TILE].x = TILE_WIDTH * 2;
-        gSpriteClips[GRASS3_TILE].y = 0;
-        gSpriteClips[GRASS3_TILE].w = TILE_WIDTH;
-        gSpriteClips[GRASS3_TILE].h = TILE_HEIGHT;
-
-        gSpriteClips[GRASS4_TILE].x = TILE_WIDTH * 3;
-        gSpriteClips[GRASS4_TILE].y = 0;
-        gSpriteClips[GRASS4_TILE].w = TILE_WIDTH;
-        gSpriteClips[GRASS4_TILE].h = TILE_HEIGHT;
-
-        // Water tiles
-        gSpriteClips[WATER1_TILE].x = TILE_WIDTH * 4;
-        gSpriteClips[WATER1_TILE].y = 0;
-        gSpriteClips[WATER1_TILE].w = TILE_WIDTH;
-        gSpriteClips[WATER1_TILE].h = TILE_HEIGHT;
-
-        gSpriteClips[WATER2_TILE].x = TILE_WIDTH * 5;
-        gSpriteClips[WATER2_TILE].y = 0;
-        gSpriteClips[WATER2_TILE].w = TILE_WIDTH;
-        gSpriteClips[WATER2_TILE].h = TILE_HEIGHT;
-
-        gSpriteClips[WATER3_TILE].x = TILE_WIDTH * 6;
-        gSpriteClips[WATER3_TILE].y = 0;
-        gSpriteClips[WATER3_TILE].w = TILE_WIDTH;
-        gSpriteClips[WATER3_TILE].h = TILE_HEIGHT;
-
-        gSpriteClips[WATER4_TILE].x = TILE_WIDTH * 7;
-        gSpriteClips[WATER4_TILE].y = 0;
-        gSpriteClips[WATER4_TILE].w = TILE_WIDTH;
-        gSpriteClips[WATER4_TILE].h = TILE_HEIGHT;
-
-        // Mountain tiles
-        gSpriteClips[MOUNTAIN1_TILE].x = TILE_WIDTH * 0;
-        gSpriteClips[MOUNTAIN1_TILE].y = TILE_HEIGHT;
-        gSpriteClips[MOUNTAIN1_TILE].w = TILE_WIDTH;
-        gSpriteClips[MOUNTAIN1_TILE].h = TILE_HEIGHT;
-
-        gSpriteClips[MOUNTAIN2_TILE].x = TILE_WIDTH * 1;
-        gSpriteClips[MOUNTAIN2_TILE].y = TILE_HEIGHT;
-        gSpriteClips[MOUNTAIN2_TILE].w = TILE_WIDTH;
-        gSpriteClips[MOUNTAIN2_TILE].h = TILE_HEIGHT;
-
-        gSpriteClips[MOUNTAIN3_TILE].x = TILE_WIDTH * 2;
-        gSpriteClips[MOUNTAIN3_TILE].y = TILE_HEIGHT;
-        gSpriteClips[MOUNTAIN3_TILE].w = TILE_WIDTH;
-        gSpriteClips[MOUNTAIN3_TILE].h = TILE_HEIGHT;
-
-        gSpriteClips[MOUNTAIN4_TILE].x = TILE_WIDTH * 3;
-        gSpriteClips[MOUNTAIN4_TILE].y = TILE_HEIGHT;
-        gSpriteClips[MOUNTAIN4_TILE].w = TILE_WIDTH;
-        gSpriteClips[MOUNTAIN4_TILE].h = TILE_HEIGHT;
-
-        gSpriteClips[DESERT1_TILE].x = TILE_WIDTH * 4;
-        gSpriteClips[DESERT1_TILE].y = TILE_HEIGHT;
-        gSpriteClips[DESERT1_TILE].w = TILE_WIDTH;
-        gSpriteClips[DESERT1_TILE].h = TILE_HEIGHT;
-
-        gSpriteClips[DESERT2_TILE].x = TILE_WIDTH * 5;
-        gSpriteClips[DESERT2_TILE].y = TILE_HEIGHT;
-        gSpriteClips[DESERT2_TILE].w = TILE_WIDTH;
-        gSpriteClips[DESERT2_TILE].h = TILE_HEIGHT;
-
-        gSpriteClips[DESERT3_TILE].x = TILE_WIDTH * 6;
-        gSpriteClips[DESERT3_TILE].y = TILE_HEIGHT;
-        gSpriteClips[DESERT3_TILE].w = TILE_WIDTH;
-        gSpriteClips[DESERT3_TILE].h = TILE_HEIGHT;
-
-        gSpriteClips[DESERT4_TILE].x = TILE_WIDTH * 7;
-        gSpriteClips[DESERT4_TILE].y = TILE_HEIGHT;
-        gSpriteClips[DESERT4_TILE].w = TILE_WIDTH;
-        gSpriteClips[DESERT4_TILE].h = TILE_HEIGHT;
-
-        gSpriteClips[FOREST1_TILE].x = TILE_WIDTH * 0;
-        gSpriteClips[FOREST1_TILE].y = TILE_HEIGHT * 2;
-        gSpriteClips[FOREST1_TILE].w = TILE_WIDTH;
-        gSpriteClips[FOREST1_TILE].h = TILE_HEIGHT;
-
-        gSpriteClips[FOREST2_TILE].x = TILE_WIDTH * 1;
-        gSpriteClips[FOREST2_TILE].y = TILE_HEIGHT * 2;
-        gSpriteClips[FOREST2_TILE].w = TILE_WIDTH;
-        gSpriteClips[FOREST2_TILE].h = TILE_HEIGHT;
-
-        gSpriteClips[FOREST3_TILE].x = TILE_WIDTH * 2;
-        gSpriteClips[FOREST3_TILE].y = TILE_HEIGHT * 2;
-        gSpriteClips[FOREST3_TILE].w = TILE_WIDTH;
-        gSpriteClips[FOREST3_TILE].h = TILE_HEIGHT;
-
-        gSpriteClips[FOREST4_TILE].x = TILE_WIDTH * 3;
-        gSpriteClips[FOREST4_TILE].y = TILE_HEIGHT * 2;
-        gSpriteClips[FOREST4_TILE].w = TILE_WIDTH;
-        gSpriteClips[FOREST4_TILE].h = TILE_HEIGHT;
-
-        gSpriteClips[DIRT1_TILE].x = TILE_WIDTH * 0;
-        gSpriteClips[DIRT1_TILE].y = TILE_HEIGHT * 3;
-        gSpriteClips[DIRT1_TILE].w = TILE_WIDTH;
-        gSpriteClips[DIRT1_TILE].h = TILE_HEIGHT;
-
-        gSpriteClips[DIRT2_TILE].x = TILE_WIDTH * 1;
-        gSpriteClips[DIRT2_TILE].y = TILE_HEIGHT * 3;
-        gSpriteClips[DIRT2_TILE].w = TILE_WIDTH;
-        gSpriteClips[DIRT2_TILE].h = TILE_HEIGHT;
-
-        gSpriteClips[DIRT3_TILE].x = TILE_WIDTH * 2;
-        gSpriteClips[DIRT3_TILE].y = TILE_HEIGHT * 3;
-        gSpriteClips[DIRT3_TILE].w = TILE_WIDTH;
-        gSpriteClips[DIRT3_TILE].h = TILE_HEIGHT;
-
-        gSpriteClips[DIRT4_TILE].x = TILE_WIDTH * 3;
-        gSpriteClips[DIRT4_TILE].y = TILE_HEIGHT * 3;
-        gSpriteClips[DIRT4_TILE].w = TILE_WIDTH;
-        gSpriteClips[DIRT4_TILE].h = TILE_HEIGHT;
-
-        gSpriteClips[MARSH1_TILE].x = TILE_WIDTH * 4;
-        gSpriteClips[MARSH1_TILE].y = TILE_HEIGHT * 2;
-        gSpriteClips[MARSH1_TILE].w = TILE_WIDTH;
-        gSpriteClips[MARSH1_TILE].h = TILE_HEIGHT;
-
-        gSpriteClips[MARSH2_TILE].x = TILE_WIDTH * 5;
-        gSpriteClips[MARSH2_TILE].y = TILE_HEIGHT * 2;
-        gSpriteClips[MARSH2_TILE].w = TILE_WIDTH;
-        gSpriteClips[MARSH2_TILE].h = TILE_HEIGHT;
-
-        gSpriteClips[MARSH3_TILE].x = TILE_WIDTH * 6;
-        gSpriteClips[MARSH3_TILE].y = TILE_HEIGHT * 2;
-        gSpriteClips[MARSH3_TILE].w = TILE_WIDTH;
-        gSpriteClips[MARSH3_TILE].h = TILE_HEIGHT;
-
-        gSpriteClips[MARSH4_TILE].x = TILE_WIDTH * 7;
-        gSpriteClips[MARSH4_TILE].y = TILE_HEIGHT * 2;
-        gSpriteClips[MARSH4_TILE].w = TILE_WIDTH;
-        gSpriteClips[MARSH4_TILE].h = TILE_HEIGHT;
-
-        gSpriteClips[HILLS1_TILE].x = TILE_WIDTH * 0;
-        gSpriteClips[HILLS1_TILE].y = TILE_HEIGHT * 4;
-        gSpriteClips[HILLS1_TILE].w = TILE_WIDTH;
-        gSpriteClips[HILLS1_TILE].h = TILE_HEIGHT;
-
-        gSpriteClips[HILLS2_TILE].x = TILE_WIDTH * 1;
-        gSpriteClips[HILLS2_TILE].y = TILE_HEIGHT * 4;
-        gSpriteClips[HILLS2_TILE].w = TILE_WIDTH;
-        gSpriteClips[HILLS2_TILE].h = TILE_HEIGHT;
-
-        gSpriteClips[HILLS3_TILE].x = TILE_WIDTH * 2;
-        gSpriteClips[HILLS3_TILE].y = TILE_HEIGHT * 4;
-        gSpriteClips[HILLS3_TILE].w = TILE_WIDTH;
-        gSpriteClips[HILLS3_TILE].h = TILE_HEIGHT;
-
-        gSpriteClips[HILLS4_TILE].x = TILE_WIDTH * 3;
-        gSpriteClips[HILLS4_TILE].y = TILE_HEIGHT * 4;
-        gSpriteClips[HILLS4_TILE].w = TILE_WIDTH;
-        gSpriteClips[HILLS4_TILE].h = TILE_HEIGHT;
     }
+
+//    if (!gIconTexture.loadFromFile(
+//            gRenderer,
+//            "assets/images/icons.png")) {
+//        printf("Failed to load icon texture!\n");
+//
+//        success = false;
+//    }
+
+    // Grass tiles
+    gTileClips[GRASS1_TILE].x = TILE_WIDTH * 0;
+    gTileClips[GRASS1_TILE].y = 0;
+    gTileClips[GRASS1_TILE].w = TILE_WIDTH;
+    gTileClips[GRASS1_TILE].h = TILE_HEIGHT;
+
+    gTileClips[GRASS2_TILE].x = TILE_WIDTH * 1;
+    gTileClips[GRASS2_TILE].y = 0;
+    gTileClips[GRASS2_TILE].w = TILE_WIDTH;
+    gTileClips[GRASS2_TILE].h = TILE_HEIGHT;
+
+    gTileClips[GRASS3_TILE].x = TILE_WIDTH * 2;
+    gTileClips[GRASS3_TILE].y = 0;
+    gTileClips[GRASS3_TILE].w = TILE_WIDTH;
+    gTileClips[GRASS3_TILE].h = TILE_HEIGHT;
+
+    gTileClips[GRASS4_TILE].x = TILE_WIDTH * 3;
+    gTileClips[GRASS4_TILE].y = 0;
+    gTileClips[GRASS4_TILE].w = TILE_WIDTH;
+    gTileClips[GRASS4_TILE].h = TILE_HEIGHT;
+
+    // Water tiles
+    gTileClips[WATER1_TILE].x = TILE_WIDTH * 4;
+    gTileClips[WATER1_TILE].y = 0;
+    gTileClips[WATER1_TILE].w = TILE_WIDTH;
+    gTileClips[WATER1_TILE].h = TILE_HEIGHT;
+
+    gTileClips[WATER2_TILE].x = TILE_WIDTH * 5;
+    gTileClips[WATER2_TILE].y = 0;
+    gTileClips[WATER2_TILE].w = TILE_WIDTH;
+    gTileClips[WATER2_TILE].h = TILE_HEIGHT;
+
+    gTileClips[WATER3_TILE].x = TILE_WIDTH * 6;
+    gTileClips[WATER3_TILE].y = 0;
+    gTileClips[WATER3_TILE].w = TILE_WIDTH;
+    gTileClips[WATER3_TILE].h = TILE_HEIGHT;
+
+    gTileClips[WATER4_TILE].x = TILE_WIDTH * 7;
+    gTileClips[WATER4_TILE].y = 0;
+    gTileClips[WATER4_TILE].w = TILE_WIDTH;
+    gTileClips[WATER4_TILE].h = TILE_HEIGHT;
+
+    // Mountain tiles
+    gTileClips[MOUNTAIN1_TILE].x = TILE_WIDTH * 0;
+    gTileClips[MOUNTAIN1_TILE].y = TILE_HEIGHT;
+    gTileClips[MOUNTAIN1_TILE].w = TILE_WIDTH;
+    gTileClips[MOUNTAIN1_TILE].h = TILE_HEIGHT;
+
+    gTileClips[MOUNTAIN2_TILE].x = TILE_WIDTH * 1;
+    gTileClips[MOUNTAIN2_TILE].y = TILE_HEIGHT;
+    gTileClips[MOUNTAIN2_TILE].w = TILE_WIDTH;
+    gTileClips[MOUNTAIN2_TILE].h = TILE_HEIGHT;
+
+    gTileClips[MOUNTAIN3_TILE].x = TILE_WIDTH * 2;
+    gTileClips[MOUNTAIN3_TILE].y = TILE_HEIGHT;
+    gTileClips[MOUNTAIN3_TILE].w = TILE_WIDTH;
+    gTileClips[MOUNTAIN3_TILE].h = TILE_HEIGHT;
+
+    gTileClips[MOUNTAIN4_TILE].x = TILE_WIDTH * 3;
+    gTileClips[MOUNTAIN4_TILE].y = TILE_HEIGHT;
+    gTileClips[MOUNTAIN4_TILE].w = TILE_WIDTH;
+    gTileClips[MOUNTAIN4_TILE].h = TILE_HEIGHT;
+
+    gTileClips[DESERT1_TILE].x = TILE_WIDTH * 4;
+    gTileClips[DESERT1_TILE].y = TILE_HEIGHT;
+    gTileClips[DESERT1_TILE].w = TILE_WIDTH;
+    gTileClips[DESERT1_TILE].h = TILE_HEIGHT;
+
+    gTileClips[DESERT2_TILE].x = TILE_WIDTH * 5;
+    gTileClips[DESERT2_TILE].y = TILE_HEIGHT;
+    gTileClips[DESERT2_TILE].w = TILE_WIDTH;
+    gTileClips[DESERT2_TILE].h = TILE_HEIGHT;
+
+    gTileClips[DESERT3_TILE].x = TILE_WIDTH * 6;
+    gTileClips[DESERT3_TILE].y = TILE_HEIGHT;
+    gTileClips[DESERT3_TILE].w = TILE_WIDTH;
+    gTileClips[DESERT3_TILE].h = TILE_HEIGHT;
+
+    gTileClips[DESERT4_TILE].x = TILE_WIDTH * 7;
+    gTileClips[DESERT4_TILE].y = TILE_HEIGHT;
+    gTileClips[DESERT4_TILE].w = TILE_WIDTH;
+    gTileClips[DESERT4_TILE].h = TILE_HEIGHT;
+
+    gTileClips[FOREST1_TILE].x = TILE_WIDTH * 0;
+    gTileClips[FOREST1_TILE].y = TILE_HEIGHT * 2;
+    gTileClips[FOREST1_TILE].w = TILE_WIDTH;
+    gTileClips[FOREST1_TILE].h = TILE_HEIGHT;
+
+    gTileClips[FOREST2_TILE].x = TILE_WIDTH * 1;
+    gTileClips[FOREST2_TILE].y = TILE_HEIGHT * 2;
+    gTileClips[FOREST2_TILE].w = TILE_WIDTH;
+    gTileClips[FOREST2_TILE].h = TILE_HEIGHT;
+
+    gTileClips[FOREST3_TILE].x = TILE_WIDTH * 2;
+    gTileClips[FOREST3_TILE].y = TILE_HEIGHT * 2;
+    gTileClips[FOREST3_TILE].w = TILE_WIDTH;
+    gTileClips[FOREST3_TILE].h = TILE_HEIGHT;
+
+    gTileClips[FOREST4_TILE].x = TILE_WIDTH * 3;
+    gTileClips[FOREST4_TILE].y = TILE_HEIGHT * 2;
+    gTileClips[FOREST4_TILE].w = TILE_WIDTH;
+    gTileClips[FOREST4_TILE].h = TILE_HEIGHT;
+
+    gTileClips[DIRT1_TILE].x = TILE_WIDTH * 0;
+    gTileClips[DIRT1_TILE].y = TILE_HEIGHT * 3;
+    gTileClips[DIRT1_TILE].w = TILE_WIDTH;
+    gTileClips[DIRT1_TILE].h = TILE_HEIGHT;
+
+    gTileClips[DIRT2_TILE].x = TILE_WIDTH * 1;
+    gTileClips[DIRT2_TILE].y = TILE_HEIGHT * 3;
+    gTileClips[DIRT2_TILE].w = TILE_WIDTH;
+    gTileClips[DIRT2_TILE].h = TILE_HEIGHT;
+
+    gTileClips[DIRT3_TILE].x = TILE_WIDTH * 2;
+    gTileClips[DIRT3_TILE].y = TILE_HEIGHT * 3;
+    gTileClips[DIRT3_TILE].w = TILE_WIDTH;
+    gTileClips[DIRT3_TILE].h = TILE_HEIGHT;
+
+    gTileClips[DIRT4_TILE].x = TILE_WIDTH * 3;
+    gTileClips[DIRT4_TILE].y = TILE_HEIGHT * 3;
+    gTileClips[DIRT4_TILE].w = TILE_WIDTH;
+    gTileClips[DIRT4_TILE].h = TILE_HEIGHT;
+
+    gTileClips[MARSH1_TILE].x = TILE_WIDTH * 4;
+    gTileClips[MARSH1_TILE].y = TILE_HEIGHT * 2;
+    gTileClips[MARSH1_TILE].w = TILE_WIDTH;
+    gTileClips[MARSH1_TILE].h = TILE_HEIGHT;
+
+    gTileClips[MARSH2_TILE].x = TILE_WIDTH * 5;
+    gTileClips[MARSH2_TILE].y = TILE_HEIGHT * 2;
+    gTileClips[MARSH2_TILE].w = TILE_WIDTH;
+    gTileClips[MARSH2_TILE].h = TILE_HEIGHT;
+
+    gTileClips[MARSH3_TILE].x = TILE_WIDTH * 6;
+    gTileClips[MARSH3_TILE].y = TILE_HEIGHT * 2;
+    gTileClips[MARSH3_TILE].w = TILE_WIDTH;
+    gTileClips[MARSH3_TILE].h = TILE_HEIGHT;
+
+    gTileClips[MARSH4_TILE].x = TILE_WIDTH * 7;
+    gTileClips[MARSH4_TILE].y = TILE_HEIGHT * 2;
+    gTileClips[MARSH4_TILE].w = TILE_WIDTH;
+    gTileClips[MARSH4_TILE].h = TILE_HEIGHT;
+
+    gTileClips[HILLS1_TILE].x = TILE_WIDTH * 0;
+    gTileClips[HILLS1_TILE].y = TILE_HEIGHT * 4;
+    gTileClips[HILLS1_TILE].w = TILE_WIDTH;
+    gTileClips[HILLS1_TILE].h = TILE_HEIGHT;
+
+    gTileClips[HILLS2_TILE].x = TILE_WIDTH * 1;
+    gTileClips[HILLS2_TILE].y = TILE_HEIGHT * 4;
+    gTileClips[HILLS2_TILE].w = TILE_WIDTH;
+    gTileClips[HILLS2_TILE].h = TILE_HEIGHT;
+
+    gTileClips[HILLS3_TILE].x = TILE_WIDTH * 2;
+    gTileClips[HILLS3_TILE].y = TILE_HEIGHT * 4;
+    gTileClips[HILLS3_TILE].w = TILE_WIDTH;
+    gTileClips[HILLS3_TILE].h = TILE_HEIGHT;
+
+    gTileClips[HILLS4_TILE].x = TILE_WIDTH * 3;
+    gTileClips[HILLS4_TILE].y = TILE_HEIGHT * 4;
+    gTileClips[HILLS4_TILE].w = TILE_WIDTH;
+    gTileClips[HILLS4_TILE].h = TILE_HEIGHT;
+
+//    gIconClips[FOOD_ICON].x = ICON_WIDTH * 4;
+//    gIconClips[FOOD_ICON].y = ICON_HEIGHT * 0;
+//    gIconClips[FOOD_ICON].w = ICON_WIDTH;
+//    gIconClips[FOOD_ICON].h = ICON_HEIGHT;
 
     return success;
 }
@@ -279,12 +288,18 @@ int main(__unused int argc, __unused char *args[]) {
             printf("Failed to load media!\n");
         } else {
             bool quit = false;
-            Tile* tiles = (Tile*)malloc(sizeof(Tile) * NUM_TILES);
 
+            srand((unsigned) time(0));
+            Tile* tiles = (Tile*)malloc(sizeof(Tile) * NUM_TILES);
             for (int row = 0; row < NUM_ROWS; row++) {
                 for (int col = 0; col < NUM_COLS; col++) {
                     int index = row * NUM_COLS + col;
-                    tiles[index] = Tile(gRenderer, &gSpriteSheetTexture, col, row, gSpriteClips[FOREST1_TILE]);
+                    int randClip = rand() % 32;
+                    tiles[index] = Tile(gRenderer,
+                                        &gTileTexture,
+                                        col,
+                                        row,
+                                        gTileClips[randClip]);
                 }
             }
 
@@ -306,7 +321,6 @@ int main(__unused int argc, __unused char *args[]) {
                     }
                 }
 
-                // Calculate and correct fps
                 float avgFPS = countedFrames / (fpsTimer.getTicks() / 1000.f);
                 if (avgFPS > 2000000) {
                     avgFPS = 0;
@@ -315,7 +329,10 @@ int main(__unused int argc, __unused char *args[]) {
                 timeText.str("");
                 timeText << "Average Frames Per Second (With Cap) " << avgFPS;
 
-                if (!gFPSTextTexture.loadFromRenderedText(gRenderer, gFont, timeText.str().c_str(), textColor)) {
+                if (!gFPSTextTexture.loadFromRenderedText(gRenderer,
+                                                          gFont,
+                                                          timeText.str().c_str(),
+                                                          textColor)) {
                     printf("Unable to render FPS texture!\n");
                 }
 
@@ -326,27 +343,20 @@ int main(__unused int argc, __unused char *args[]) {
                     tiles[i].render();
                 }
 
-//                for (auto &tile : tiles) {
-//                    tile.render();
-//                }
-
-                gFPSTextTexture.render(gRenderer,
-                                       (SCREEN_WIDTH - gFPSTextTexture.getWidth()) / 2,
-                                       (SCREEN_HEIGHT - gFPSTextTexture.getHeight()) / 2);
+//                gFPSTextTexture.render(gRenderer,
+//                                       (SCREEN_WIDTH - gFPSTextTexture.getWidth()) / 2,
+//                                       (SCREEN_HEIGHT - gFPSTextTexture.getHeight()) / 2);
                 SDL_RenderPresent(gRenderer);
                 ++countedFrames;
 
-                // If frame finished early
                 int frameTicks = capTimer.getTicks();
                 if (frameTicks < SCREEN_TICK_PER_FRAME) {
-                    //Wait remaining time
                     SDL_Delay(SCREEN_TICK_PER_FRAME - frameTicks);
                 }
             }
         }
     }
 
-    //Free resources and close SDL
     close();
 
     return 0;
