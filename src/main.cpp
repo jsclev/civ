@@ -19,8 +19,7 @@ SDL_Renderer *gRenderer = nullptr;
 TTF_Font *gFont = nullptr;
 SDL_Rect gTileClips[32];
 SDL_Rect gIconClips[1];
-Texture gTileTexture;
-Texture gIconTexture;
+Texture gSpritesTexture;
 Texture gFPSTextTexture;
 
 bool init() {
@@ -53,12 +52,12 @@ bool init() {
 
                 int imgFlags = IMG_INIT_PNG;
                 if (!(IMG_Init(imgFlags) & imgFlags)) {
-                    printf("SDL_image could not initialize! SDL_image Error: %s\n", IMG_GetError());
+                    printf("SDL_image Error: %s\n", IMG_GetError());
                     success = false;
                 }
 
                 if (TTF_Init() == -1) {
-                    printf("SDL_ttf could not initialize! SDL_ttf Error: %s\n", TTF_GetError());
+                    printf("SDL_ttf Error: %s\n", TTF_GetError());
                     success = false;
                 }
             }
@@ -77,21 +76,13 @@ bool loadMedia() {
         success = false;
     }
 
-    if (!gTileTexture.loadFromFile(
+    if (!gSpritesTexture.loadFromFile(
             gRenderer,
             "assets/images/tiles/painted_terrain_tiles_basic_256x384_sheet.png")) {
         printf("Failed to load sprite sheet texture!\n");
 
         success = false;
     }
-
-//    if (!gIconTexture.loadFromFile(
-//            gRenderer,
-//            "assets/images/icons.png")) {
-//        printf("Failed to load icon texture!\n");
-//
-//        success = false;
-//    }
 
     // Grass tiles
     gTileClips[GRASS1_TILE].x = TILE_WIDTH * 0;
@@ -256,10 +247,10 @@ bool loadMedia() {
     gTileClips[HILLS4_TILE].w = TILE_WIDTH;
     gTileClips[HILLS4_TILE].h = TILE_HEIGHT;
 
-//    gIconClips[FOOD_ICON].x = ICON_WIDTH * 4;
-//    gIconClips[FOOD_ICON].y = ICON_HEIGHT * 0;
-//    gIconClips[FOOD_ICON].w = ICON_WIDTH;
-//    gIconClips[FOOD_ICON].h = ICON_HEIGHT;
+    gIconClips[FOOD_ICON].x = 7 + TILE_WIDTH * 8 + ICON_WIDTH * 0;
+    gIconClips[FOOD_ICON].y = ICON_HEIGHT * 0;
+    gIconClips[FOOD_ICON].w = ICON_WIDTH;
+    gIconClips[FOOD_ICON].h = ICON_HEIGHT;
 
     return success;
 }
@@ -296,12 +287,19 @@ int main(__unused int argc, __unused char *args[]) {
                     int index = row * NUM_COLS + col;
                     int randClip = rand() % 32;
                     tiles[index] = Tile(gRenderer,
-                                        &gTileTexture,
-                                        col,
-                                        row,
+                                        &gSpritesTexture,
+                                        col * TILE_WIDTH,
+                                        row * TILE_SIZE - TILE_SIZE / 2,
                                         gTileClips[randClip]);
                 }
             }
+
+            Tile* icons = (Tile*)malloc(sizeof(Tile) * NUM_ICONS);
+            icons[0] = Tile(gRenderer,
+                            &gSpritesTexture,
+                            0,
+                            0,
+                            gIconClips[FOOD_ICON]);
 
             SDL_Event e;
             SDL_Color textColor = {0, 0, 0, 255};
@@ -341,6 +339,10 @@ int main(__unused int argc, __unused char *args[]) {
 
                 for (int i = 0; i < NUM_TILES; i++) {
                     tiles[i].render();
+                }
+
+                for (int i = 0; i < NUM_ICONS; i++) {
+                    icons[i].render();
                 }
 
 //                gFPSTextTexture.render(gRenderer,

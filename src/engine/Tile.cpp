@@ -3,23 +3,23 @@
 
 Tile::Tile() :
         renderer(nullptr),
-        tileTexture(nullptr),
+        texture(nullptr),
         x(0),
         y(0),
-        tileClip({0, 0, 0, 0}) {
+        clip({0, 0, 0, 0}) {
 
 }
 
 Tile::Tile(SDL_Renderer *renderer,
-           Texture *tileTexture,
+           Texture *texture,
            int x,
            int y,
-           SDL_Rect tileClip) :
+           SDL_Rect clip) :
         renderer(renderer),
-        tileTexture(tileTexture),
+        texture(texture),
         x(x),
         y(y),
-        tileClip(tileClip) {
+        clip(clip) {
 
 }
 
@@ -30,14 +30,14 @@ Tile::~Tile() = default;
 //}
 
 void Tile::render() {
-    tileTexture->render(
-            this->renderer,
-            this->x * TILE_WIDTH,
-            this->y * TILE_SIZE - TILE_SIZE / 2,
-            &tileClip);
-//    iconTexture->render(
+//    texture->render(
 //            this->renderer,
-//            4 * ICON_WIDTH,
-//            0 * ICON_HEIGHT,
-//            &iconClip);
+//            this->x * TILE_WIDTH,
+//            this->y * TILE_SIZE - TILE_SIZE / 2,
+//            &clip);
+    texture->render(
+            renderer,
+            x,
+            y,
+            &clip);
 }

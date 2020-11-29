@@ -12,10 +12,10 @@ public:
     Tile();
 
     Tile(SDL_Renderer *renderer,
-         Texture *tileTexture,
+         Texture *texture,
          int x,
          int y,
-         SDL_Rect tileClip);
+         SDL_Rect clip);
 
     ~Tile();
 
@@ -25,13 +25,10 @@ public:
 
 private:
     SDL_Renderer *renderer;
-    Texture *tileTexture;
-    Texture *iconTexture;
-    SDL_Rect tileClip;
-    SDL_Rect iconClip;
+    Texture *texture;
+    SDL_Rect clip;
     int x;
     int y;
-    std::vector<TileLayer> layers;
 };
 
 

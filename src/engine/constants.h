@@ -12,6 +12,7 @@ const int TILE_SIZE = 256;
 const int NUM_ROWS = 9;
 const int NUM_COLS = 16;
 const int NUM_TILES = NUM_ROWS * NUM_COLS;
+const int NUM_ICONS = 1;
 
 const int GRASS1_TILE = 0;
 const int GRASS2_TILE = 1;
@@ -46,8 +47,8 @@ const int HILLS2_TILE = 29;
 const int HILLS3_TILE = 30;
 const int HILLS4_TILE = 31;
 
-const int ICON_WIDTH = 21;
-const int ICON_HEIGHT = 22;
+const int ICON_WIDTH = 80;
+const int ICON_HEIGHT = 90;
 const int PRODUCTION_ICON = 3;
 const int FOOD_ICON = 0;
 
