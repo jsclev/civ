@@ -72,7 +72,7 @@ bool init() {
 bool loadMedia() {
     bool success = true;
 
-    gFont = TTF_OpenFont("assets/fonts/Pigiarniq1.2/Pigiarniq Bold.ttf", 64);
+    gFont = TTF_OpenFont("assets/fonts/georgia/georgia bold.ttf", 60);
     if (gFont == nullptr) {
         printf("Failed to load lazy font! SDL_ttf Error: %s\n", TTF_GetError());
         success = false;
@@ -322,7 +322,7 @@ int main(__unused int argc, __unused char *args[]) {
 //                            gIconClips[FOOD_ICON]);
 
             SDL_Event e;
-            SDL_Color textColor = {0, 0, 0, 255};
+            SDL_Color textColor = {71, 26, 13, 255};
 
             Timer fpsTimer;
             Timer capTimer;
@@ -339,20 +339,6 @@ int main(__unused int argc, __unused char *args[]) {
                     }
 
                     button.handleEvent(&e, tiles, gTileClips);
-
-//                    if (e.type == SDL_MOUSEBUTTONDOWN) {
-//                        for (int row = 0; row < NUM_ROWS; row++) {
-//                            for (int col = 0; col < NUM_COLS; col++) {
-//                                int index = row * NUM_COLS + col;
-//                                int randClip = rand() % 32;
-//                                tiles[index] = Tile(gRenderer,
-//                                                    &gSpritesTexture,
-//                                                    col * TILE_WIDTH,
-//                                                    row * TILE_SIZE - TILE_SIZE / 2,
-//                                                    gTileClips[randClip]);
-//                            }
-//                        }
-//                    }
                 }
 
                 float avgFPS = countedFrames / (fpsTimer.getTicks() / 1000.f);
@@ -360,12 +346,11 @@ int main(__unused int argc, __unused char *args[]) {
                     avgFPS = 0;
                 }
 
-                timeText.str("");
-                timeText << "Regenerate Map";
+                timeText.str("Regenerate Map");
 
                 if (!gFPSTextTexture.loadFromRenderedText(gRenderer,
                                                           gFont,
-                                                          timeText.str().c_str(),
+                                                          timeText.str(),
                                                           textColor)) {
                     printf("Unable to render FPS texture!\n");
                 }
@@ -382,7 +367,7 @@ int main(__unused int argc, __unused char *args[]) {
 //                }
 
                 button.render();
-                gFPSTextTexture.render(gRenderer, 2435, 1785);
+                gFPSTextTexture.render(gRenderer, 2445, 1775);
                 SDL_RenderPresent(gRenderer);
                 ++countedFrames;
 
