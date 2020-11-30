@@ -14,6 +14,10 @@ const int NUM_COLS = 16;
 const int NUM_TILES = NUM_ROWS * NUM_COLS;
 const int NUM_ICONS = NUM_TILES;
 
+const int BUTTON_WIDTH = 670;
+const int BUTTON_HEIGHT = 162;
+const int TOTAL_BUTTONS = 4;
+
 const int GRASS1_TILE = 0;
 const int GRASS2_TILE = 1;
 const int GRASS3_TILE = 2;
@@ -51,5 +55,7 @@ const int ICON_WIDTH = 80;
 const int ICON_HEIGHT = 90;
 const int PRODUCTION_ICON = 3;
 const int FOOD_ICON = 0;
+
+const int MAIN_BUTTON = 0;
 
 #endif

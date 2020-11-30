@@ -19,8 +19,6 @@ public:
 
     ~Tile();
 
-//    void addLayer(TileLayer layer);
-
     void render();
 
 private:

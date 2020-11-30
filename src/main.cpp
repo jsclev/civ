@@ -9,6 +9,7 @@
 #include "engine/Timer.h"
 #include "engine/Tile.h"
 #include "engine/constants.h"
+#include "engine/Button.h"
 
 bool init();
 bool loadMedia();
@@ -19,6 +20,7 @@ SDL_Renderer *gRenderer = nullptr;
 TTF_Font *gFont = nullptr;
 SDL_Rect gTileClips[32];
 SDL_Rect gIconClips[1];
+SDL_Rect gButtonClips[1];
 Texture gSpritesTexture;
 Texture gFPSTextTexture;
 
@@ -70,7 +72,7 @@ bool init() {
 bool loadMedia() {
     bool success = true;
 
-    gFont = TTF_OpenFont("assets/fonts/lazy.ttf", 28);
+    gFont = TTF_OpenFont("assets/fonts/Pigiarniq1.2/Pigiarniq Bold.ttf", 64);
     if (gFont == nullptr) {
         printf("Failed to load lazy font! SDL_ttf Error: %s\n", TTF_GetError());
         success = false;
@@ -252,6 +254,11 @@ bool loadMedia() {
     gIconClips[FOOD_ICON].w = ICON_WIDTH;
     gIconClips[FOOD_ICON].h = ICON_HEIGHT;
 
+    gButtonClips[MAIN_BUTTON].x = TILE_WIDTH * 8;
+    gButtonClips[MAIN_BUTTON].y = TILE_HEIGHT / 3;
+    gButtonClips[MAIN_BUTTON].w = BUTTON_WIDTH;
+    gButtonClips[MAIN_BUTTON].h = BUTTON_HEIGHT;
+
     return success;
 }
 
@@ -280,6 +287,12 @@ int main(__unused int argc, __unused char *args[]) {
         } else {
             bool quit = false;
 
+            Button button = Button(gRenderer,
+                                   &gSpritesTexture,
+                                   2360,
+                                   1740,
+                                   gButtonClips[MAIN_BUTTON]);
+
             srand((unsigned) time(0));
             Tile* tiles = (Tile*)malloc(sizeof(Tile) * NUM_TILES);
             Tile* icons = (Tile*)malloc(sizeof(Tile) * NUM_ICONS);
@@ -293,11 +306,11 @@ int main(__unused int argc, __unused char *args[]) {
                                         col * TILE_WIDTH,
                                         row * TILE_SIZE - TILE_SIZE / 2,
                                         gTileClips[randClip]);
-                    icons[index] = Tile(gRenderer,
-                                    &gSpritesTexture,
-                                    col * TILE_WIDTH,
-                                    row * TILE_SIZE - TILE_SIZE / 2,
-                                    gIconClips[FOOD_ICON]);
+//                    icons[index] = Tile(gRenderer,
+//                                    &gSpritesTexture,
+//                                    col * TILE_WIDTH,
+//                                    row * TILE_SIZE - TILE_SIZE / 2,
+//                                    gIconClips[FOOD_ICON]);
                 }
             }
 
@@ -324,6 +337,22 @@ int main(__unused int argc, __unused char *args[]) {
                     if (e.type == SDL_QUIT) {
                         quit = true;
                     }
+
+                    button.handleEvent(&e, tiles, gTileClips);
+
+//                    if (e.type == SDL_MOUSEBUTTONDOWN) {
+//                        for (int row = 0; row < NUM_ROWS; row++) {
+//                            for (int col = 0; col < NUM_COLS; col++) {
+//                                int index = row * NUM_COLS + col;
+//                                int randClip = rand() % 32;
+//                                tiles[index] = Tile(gRenderer,
+//                                                    &gSpritesTexture,
+//                                                    col * TILE_WIDTH,
+//                                                    row * TILE_SIZE - TILE_SIZE / 2,
+//                                                    gTileClips[randClip]);
+//                            }
+//                        }
+//                    }
                 }
 
                 float avgFPS = countedFrames / (fpsTimer.getTicks() / 1000.f);
@@ -332,7 +361,7 @@ int main(__unused int argc, __unused char *args[]) {
                 }
 
                 timeText.str("");
-                timeText << "Average Frames Per Second (With Cap) " << avgFPS;
+                timeText << "Regenerate Map";
 
                 if (!gFPSTextTexture.loadFromRenderedText(gRenderer,
                                                           gFont,
@@ -348,13 +377,12 @@ int main(__unused int argc, __unused char *args[]) {
                     tiles[i].render();
                 }
 
-                for (int i = 0; i < NUM_ICONS; i++) {
-                    icons[i].render();
-                }
+//                for (int i = 0; i < NUM_ICONS; i++) {
+//                    icons[i].render();
+//                }
 
-//                gFPSTextTexture.render(gRenderer,
-//                                       (SCREEN_WIDTH - gFPSTextTexture.getWidth()) / 2,
-//                                       (SCREEN_HEIGHT - gFPSTextTexture.getHeight()) / 2);
+                button.render();
+                gFPSTextTexture.render(gRenderer, 2435, 1785);
                 SDL_RenderPresent(gRenderer);
                 ++countedFrames;
 

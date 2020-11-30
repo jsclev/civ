@@ -25,19 +25,6 @@ Tile::Tile(SDL_Renderer *renderer,
 
 Tile::~Tile() = default;
 
-//void Tile::addLayer(TileLayer layer) {
-//    layers.push_back(layer);
-//}
-
 void Tile::render() {
-//    texture->render(
-//            this->renderer,
-//            this->x * TILE_WIDTH,
-//            this->y * TILE_SIZE - TILE_SIZE / 2,
-//            &clip);
-    texture->render(
-            renderer,
-            x,
-            y,
-            &clip);
+    texture->render(renderer, x, y, &clip);
 }
