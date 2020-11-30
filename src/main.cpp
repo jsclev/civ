@@ -282,6 +282,8 @@ int main(__unused int argc, __unused char *args[]) {
 
             srand((unsigned) time(0));
             Tile* tiles = (Tile*)malloc(sizeof(Tile) * NUM_TILES);
+            Tile* icons = (Tile*)malloc(sizeof(Tile) * NUM_ICONS);
+
             for (int row = 0; row < NUM_ROWS; row++) {
                 for (int col = 0; col < NUM_COLS; col++) {
                     int index = row * NUM_COLS + col;
@@ -291,15 +293,20 @@ int main(__unused int argc, __unused char *args[]) {
                                         col * TILE_WIDTH,
                                         row * TILE_SIZE - TILE_SIZE / 2,
                                         gTileClips[randClip]);
+                    icons[index] = Tile(gRenderer,
+                                    &gSpritesTexture,
+                                    col * TILE_WIDTH,
+                                    row * TILE_SIZE - TILE_SIZE / 2,
+                                    gIconClips[FOOD_ICON]);
                 }
             }
 
-            Tile* icons = (Tile*)malloc(sizeof(Tile) * NUM_ICONS);
-            icons[0] = Tile(gRenderer,
-                            &gSpritesTexture,
-                            0,
-                            0,
-                            gIconClips[FOOD_ICON]);
+//            Tile* icons = (Tile*)malloc(sizeof(Tile) * NUM_ICONS);
+//            icons[0] = Tile(gRenderer,
+//                            &gSpritesTexture,
+//                            500,
+//                            500,
+//                            gIconClips[FOOD_ICON]);
 
             SDL_Event e;
             SDL_Color textColor = {0, 0, 0, 255};

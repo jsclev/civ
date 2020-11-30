@@ -12,7 +12,7 @@ const int TILE_SIZE = 256;
 const int NUM_ROWS = 9;
 const int NUM_COLS = 16;
 const int NUM_TILES = NUM_ROWS * NUM_COLS;
-const int NUM_ICONS = 1;
+const int NUM_ICONS = NUM_TILES;
 
 const int GRASS1_TILE = 0;
 const int GRASS2_TILE = 1;
