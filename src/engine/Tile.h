@@ -9,8 +9,6 @@
 
 class Tile {
 public:
-    Tile();
-
     Tile(SDL_Renderer *renderer,
          Texture *texture,
          int x,
@@ -18,6 +16,10 @@ public:
          SDL_Rect clip);
 
     ~Tile();
+
+    void addLayer(TileLayer layer);
+
+    float getFood();
 
     void render();
 
@@ -27,6 +29,8 @@ private:
     SDL_Rect clip;
     int x;
     int y;
+    std::vector<TileLayer> layers;
+
 };
 
 

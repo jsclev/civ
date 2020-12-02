@@ -13,7 +13,7 @@ public:
            int y,
            SDL_Rect clip);
 
-    void handleEvent(SDL_Event *e, Tile tiles[], SDL_Rect tileClips[]);
+    void handleEvent(SDL_Event *e, std::vector<Tile> *tiles, SDL_Rect tileClips[]);
 
     void render();
 

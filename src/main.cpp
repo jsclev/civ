@@ -45,6 +45,8 @@ bool init() {
             printf("Window could not be created! SDL Error: %s\n", SDL_GetError());
             success = false;
         } else {
+            SDL_SetWindowFullscreen(gWindow, SDL_WINDOW_FULLSCREEN_DESKTOP);
+
             gRenderer = SDL_CreateRenderer(gWindow, -1, SDL_RENDERER_ACCELERATED);
             if (gRenderer == nullptr) {
                 printf("Renderer could not be created! SDL Error: %s\n", SDL_GetError());
@@ -286,22 +288,24 @@ int main(__unused int argc, __unused char *args[]) {
             printf("Failed to load media!\n");
         } else {
             bool quit = false;
+            std::vector<TileLayer> v;
+
 
             Button button = Button(gRenderer,
                                    &gSpritesTexture,
-                                   2360,
-                                   1740,
+                                   50,
+                                   50,
                                    gButtonClips[MAIN_BUTTON]);
 
             srand((unsigned) time(0));
-            Tile* tiles = (Tile*)malloc(sizeof(Tile) * NUM_TILES);
+            std::vector<Tile> tiles;
             Tile* icons = (Tile*)malloc(sizeof(Tile) * NUM_ICONS);
 
             for (int row = 0; row < NUM_ROWS; row++) {
                 for (int col = 0; col < NUM_COLS; col++) {
                     int index = row * NUM_COLS + col;
                     int randClip = rand() % 32;
-                    tiles[index] = Tile(gRenderer,
+                    tiles.emplace_back(gRenderer,
                                         &gSpritesTexture,
                                         col * TILE_WIDTH,
                                         row * TILE_SIZE - TILE_SIZE / 2,
@@ -338,7 +342,7 @@ int main(__unused int argc, __unused char *args[]) {
                         quit = true;
                     }
 
-                    button.handleEvent(&e, tiles, gTileClips);
+                    button.handleEvent(&e, &tiles, gTileClips);
                 }
 
                 float avgFPS = countedFrames / (fpsTimer.getTicks() / 1000.f);
@@ -358,8 +362,8 @@ int main(__unused int argc, __unused char *args[]) {
                 SDL_SetRenderDrawColor(gRenderer, 0xFF, 0xFF, 0xFF, 0xFF);
                 SDL_RenderClear(gRenderer);
 
-                for (int i = 0; i < NUM_TILES; i++) {
-                    tiles[i].render();
+                for (auto tile: tiles) {
+                    tile.render();
                 }
 
 //                for (int i = 0; i < NUM_ICONS; i++) {
@@ -367,7 +371,7 @@ int main(__unused int argc, __unused char *args[]) {
 //                }
 
                 button.render();
-                gFPSTextTexture.render(gRenderer, 2445, 1775);
+                gFPSTextTexture.render(gRenderer, 136, 84);
                 SDL_RenderPresent(gRenderer);
                 ++countedFrames;
 

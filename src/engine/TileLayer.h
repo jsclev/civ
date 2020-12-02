@@ -1,7 +1,6 @@
 #ifndef CIV_TILELAYER_H
 #define CIV_TILELAYER_H
 
-
 class TileLayer {
 public:
     TileLayer(int zIndex, float food, float production, float gold, float science);
@@ -25,6 +24,5 @@ private:
     float gold;
     float science;
 };
-
 
 #endif

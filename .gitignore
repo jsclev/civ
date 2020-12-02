@@ -12,9 +12,6 @@ cmake-build-debug/
 *.idea
 .vs
 .DS_Store
-
-# OS generated files
-.DS_Store
 .DS_Store?
 ._*
 .Spotlight-V100

@@ -1,14 +1,4 @@
 #include "Tile.h"
-#include "constants.h"
-
-Tile::Tile() :
-        renderer(nullptr),
-        texture(nullptr),
-        x(0),
-        y(0),
-        clip({0, 0, 0, 0}) {
-
-}
 
 Tile::Tile(SDL_Renderer *renderer,
            Texture *texture,
@@ -27,4 +17,18 @@ Tile::~Tile() = default;
 
 void Tile::render() {
     texture->render(renderer, x, y, &clip);
+}
+
+void Tile::addLayer(TileLayer layer) {
+    layers.emplace_back(layer);
+}
+
+float Tile::getFood() {
+    float food = 0;
+
+    for (auto layer: layers) {
+        food += layer.getFood();
+    }
+
+    return food;
 }

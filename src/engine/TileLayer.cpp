@@ -5,10 +5,12 @@ TileLayer::TileLayer(int zIndex,
                      float production,
                      float gold,
                      float science) :
-                     food(food),
-                     production(production),
-                     gold(gold),
-                     science(science) {
+        zIndex(zIndex),
+        food(food),
+        production(production),
+        gold(gold),
+        science(science) {
+
 }
 
 TileLayer::~TileLayer() = default;
