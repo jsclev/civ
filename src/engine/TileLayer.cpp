@@ -1,15 +1,21 @@
 #include "TileLayer.h"
 
-TileLayer::TileLayer(int zIndex,
-                     float food,
-                     float production,
-                     float gold,
-                     float science) :
+TileLayer::TileLayer(SDL_Renderer *renderer,
+                     Texture *texture,
+                     int x,
+                     int y,
+                     SDL_Rect clip,
+                     int zIndex) :
+        renderer(renderer),
+        texture(texture),
+        x(x),
+        y(y),
+        clip(clip),
         zIndex(zIndex),
-        food(food),
-        production(production),
-        gold(gold),
-        science(science) {
+        food(0.0),
+        production(0.0),
+        gold(0.0),
+        science(0.0 ){
 
 }
 
@@ -33,4 +39,28 @@ float TileLayer::getScience() {
 
 int TileLayer::getZIndex() {
     return zIndex;
+}
+
+void TileLayer::setFood(float f) {
+    this->food = f;
+}
+
+void TileLayer::setProduction(float p) {
+    this->production = p;
+}
+
+void TileLayer::setGold(float g) {
+    this->gold = g;
+}
+
+void TileLayer::setScience(float s) {
+    this->science = s;
+}
+
+void TileLayer::setZIndex(int z) {
+    this->zIndex = z;
+}
+
+void TileLayer::render() {
+    texture->render(renderer, x, y, &clip);
 }

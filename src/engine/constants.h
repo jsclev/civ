@@ -51,8 +51,8 @@ const int HILLS2_TILE = 29;
 const int HILLS3_TILE = 30;
 const int HILLS4_TILE = 31;
 
-const int ICON_WIDTH = 80;
-const int ICON_HEIGHT = 90;
+const int ICON_WIDTH = 72;
+const int ICON_HEIGHT = 78;
 const int PRODUCTION_ICON = 3;
 const int FOOD_ICON = 0;
 

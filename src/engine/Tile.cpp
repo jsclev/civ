@@ -17,6 +17,10 @@ Tile::~Tile() = default;
 
 void Tile::render() {
     texture->render(renderer, x, y, &clip);
+
+    for (auto layer : layers) {
+        layer.render();
+    }
 }
 
 void Tile::addLayer(TileLayer layer) {
