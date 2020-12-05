@@ -74,7 +74,7 @@ bool init() {
 bool loadMedia() {
     bool success = true;
 
-    gFont = TTF_OpenFont("assets/fonts/georgia/georgia bold.ttf", 60);
+    gFont = TTF_OpenFont("assets/fonts/georgia/georgia bold.ttf", 64);
     if (gFont == nullptr) {
         printf("Failed to load lazy font! SDL_ttf Error: %s\n", TTF_GetError());
         success = false;
@@ -371,7 +371,7 @@ int main(__unused int argc, __unused char *args[]) {
 //                }
 
                 button.render();
-                gFPSTextTexture.render(gRenderer, 136, 84);
+                gFPSTextTexture.render(gRenderer, 118, 86);
                 SDL_RenderPresent(gRenderer);
                 ++countedFrames;
 

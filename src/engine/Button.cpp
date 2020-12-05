@@ -35,7 +35,7 @@ void Button::handleEvent(SDL_Event *e, std::vector<Tile> *tiles, SDL_Rect tileCl
             tiles->clear();
             for (int row = 0; row < NUM_ROWS; row++) {
                 for (int col = 0; col < NUM_COLS; col++) {
-                    int randClip = rand() % 32;
+                    int randClip = rand() % 32; // NOLINT(cert-msc30-c, cert-msc50-cpp)
                     Tile tile = Tile(renderer,
                                      texture,
                                      col * TILE_WIDTH,
